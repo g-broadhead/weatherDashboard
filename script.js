@@ -28,7 +28,6 @@ let weather = {
         return response.json();
       })
       .then((data) => this.showFiveDayForcast(data));
-
   },
 
   // Function for showing weather data from api and searches
@@ -48,9 +47,11 @@ let weather = {
     document.getElementById("search-bar").value = "";
     this.fiveDayForcast(lat, lon)
   },
+
   search: function () {
     this.getWeather(document.getElementById("search-bar").value);
   },
+
   showFiveDayForcast: function (data) {
     console.log(data)
     const forecastTwo = data.daily;
@@ -74,10 +75,10 @@ let weather = {
     var previousSearch = JSON.parse(localStorage.getItem("WeatherAPI")) || []
     var htmlCode = ""
     for (let i = 0; i < previousSearch.length; i++) {
-      htmlCode += `<li><button class="previousSearch>${previousSearch[i]}</button></li>`
+      htmlCode += `<li><button class="previousSearch">${previousSearch[i]}</button></li>`
     }
     document.getElementById("history").innerHTML = htmlCode;
-  }
+  },
 };
 
 
@@ -95,4 +96,4 @@ document.getElementById("search-bar").addEventListener("keyup", function (event)
 
 
 // default query
-weather.getWeather("");
+weather.getWeather("Wildomar");
